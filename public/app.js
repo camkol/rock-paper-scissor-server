@@ -1,7 +1,7 @@
 const selection = document.getElementById("selection");
 const rockButton = document.getElementById("rock");
 const paperButton = document.getElementById("paper");
-const scissorButton = document.getElementById("scisoor");
+const scissorButton = document.getElementById("scissor");
 const outcome = document.getElementById("outcome");
 
 const choices = [
@@ -13,12 +13,6 @@ const choices = [
 const rock = choices[0];
 const paper = choices[1];
 const scissor = choices[2];
-
-const computer = getComputerChoice();
-
-rockButton.onclick(determineWinner(rock, computer));
-rockButton.onclick(determineWinner(rock, computer));
-rockButton.onclick(determineWinner(rock, computer));
 
 console.log(rock, paper, scissor);
 
@@ -47,8 +41,8 @@ const determineWinner = (userChoice, computerChoice) => {
       computerChoice.name === "paper" ? "The computer won!" : "You won!";
   } else if (userChoice.name === "paper") {
     winnerText =
-      computerChoice.name === "scissors" ? "The computer won!" : "You won!";
-  } else if (userChoice.name === "scissors") {
+      computerChoice.name === "scissor" ? "The computer won!" : "You won!";
+  } else if (userChoice.name === "scissor") {
     winnerText =
       computerChoice.name === "rock" ? "The computer won!" : "You won!";
   }
@@ -57,3 +51,19 @@ const determineWinner = (userChoice, computerChoice) => {
   winner.innerText = winnerText;
   outcome.appendChild(winner);
 };
+
+rockButton.addEventListener("click", () => {
+  outcome.innerHTML = "";
+  const computer = getComputerChoice();
+  determineWinner(rock, computer);
+});
+paperButton.addEventListener("click", () => {
+  outcome.innerHTML = "";
+  const computer = getComputerChoice();
+  determineWinner(paper, computer);
+});
+scissorButton.addEventListener("click", () => {
+  outcome.innerHTML = "";
+  const computer = getComputerChoice();
+  determineWinner(scissor, computer);
+});
