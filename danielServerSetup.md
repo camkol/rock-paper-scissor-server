@@ -1,0 +1,314 @@
+## Links
+
+- [Node.js](https://nodejs.org/) - JavaScript runtime environment
+- [Node.js Docs: Filesystem](https://nodejs.org/docs/latest-v20.x/api/fs.html)
+- [Express](https://expressjs.com/) - Most-used web framework for Node.js
+- [Wikipedia: Serialization](https://en.wikipedia.org/wiki/Serialization)
+
+## Setting up Server
+
+### 1. Create a project folder
+
+### 2. Create a `server.js`
+
+### 3. Make a simple static website (HTML, CSS + JS) in `./public` within the project folder
+
+`index.html`
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Rock, Paper, Scissor</title>
+  </head>
+  <body>
+    <h1>Rock, Paper, Scissor</h1>
+    <h2>Choose</h2>
+    <div id="selection">
+      <button id="rock">✊</button>
+      <button id="paper">✋</button>
+      <button id="scissor">✌️</button>
+    </div>
+    <div id="outcome"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
+```
+
+`style.css`
+
+```css
+body {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+```
+
+`app.js`
+
+```javascript
+const selection = document.getElementById("selection");
+const rockButton = document.getElementById("rock");
+const paperButton = document.getElementById("paper");
+const scissorButton = document.getElementById("scissor");
+const outcome = document.getElementById("outcome");
+
+const choices = [
+  { name: "rock", hand: "✊" },
+  { name: "paper", hand: "✋" },
+  { name: "scissor", hand: "✌️" },
+];
+
+const rock = choices[0];
+const paper = choices[1];
+const scissor = choices[2];
+
+console.log(rock, paper, scissor);
+
+const getComputerChoice = () => {
+  const randomNumber = Math.floor(Math.random() * 3);
+  switch (randomNumber) {
+    case 0:
+      return rock;
+    case 1:
+      return paper;
+    case 2:
+      return scissor;
+  }
+};
+const determineWinner = (userChoice, computerChoice) => {
+  const result = document.createElement("p");
+  result.innerText = `You went ${userChoice.hand} and the computer went ${computerChoice.hand}`;
+  outcome.appendChild(result);
+
+  let winnerText;
+
+  if (userChoice.name === computerChoice.name) {
+    winnerText = "It's a tie!";
+  } else if (userChoice.name === "rock") {
+    winnerText =
+      computerChoice.name === "paper" ? "The computer won!" : "You won!";
+  } else if (userChoice.name === "paper") {
+    winnerText =
+      computerChoice.name === "scissor" ? "The computer won!" : "You won!";
+  } else if (userChoice.name === "scissor") {
+    winnerText =
+      computerChoice.name === "rock" ? "The computer won!" : "You won!";
+  }
+
+  const winner = document.createElement("p");
+  winner.innerText = winnerText;
+  outcome.appendChild(winner);
+};
+
+rockButton.addEventListener("click", () => {
+  outcome.innerHTML = "";
+  const computer = getComputerChoice();
+  determineWinner(rock, computer);
+});
+paperButton.addEventListener("click", () => {
+  outcome.innerHTML = "";
+  const computer = getComputerChoice();
+  determineWinner(paper, computer);
+});
+scissorButton.addEventListener("click", () => {
+  outcome.innerHTML = "";
+  const computer = getComputerChoice();
+  determineWinner(scissor, computer);
+});
+```
+
+### 4. Initialized a new _Node.js_ project
+
+```bash
+npm init
+```
+
+- `package.json`: The 'manifest' of a Node.js application - Defines name, version, author etc. - Defines scripts which make complex tasks easier - Lists dependencies
+
+`package.json`
+
+```javascript
+{
+  "name": "rock-paper-scissor",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+}
+
+```
+
+### 5. include `"type": "module"` in `package.json` for import/export.
+
+`package.json`
+
+```javascript
+{
+  "name": "rock-paper-scissor",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "type": "module",
+}
+```
+
+### 6. Installed a first `npm` package: `express` and import.
+
+```bash
+npm i express
+```
+
+`package.json`
+
+```javascript
+{
+  "name": "rock-paper-scissor",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "type": "module",
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+}
+```
+
+`server.js`
+
+```javascript
+import express from "express";
+
+const app = express();
+```
+
+### 7. Serve Static Files
+
+- **What Are Static Files?** Static files refer to files that are sent to the client "as-is" without any modification.
+  Common examples include:
+  - HTML files
+  - CSS files
+  - JavaScript files
+  - Images (PNG, JPG, GIF, etc.)
+  - Fonts and other media
+    `server.js`
+
+```javascript
+app.use(express.static("public"));
+```
+
+1. **Express Middleware**:
+   - `app.use` is a method to mount middleware in your Express application. Middleware functions are functions that have access to the request object (`req`), the response object (`res`), and the next middleware function in the application’s request-response cycle.
+2. **Serving Static Files**:
+   - `express.static` is a built-in middleware function in Express. It serves static files and is based on `serve-static`.
+3. **Directory Name**:
+   - `"public"` is the name of the directory where your static files are located. When you use `express.static`, you tell Express to serve all files within the specified directory (`public` in this case) at the root level of your application.
+
+### 8. Starting the Server
+
+```javascript
+app.listen(3000, () => {
+  console.log("app is running on 3000");
+});
+```
+
+- `app.listen(3000, () => { ... })`: This starts the server on port 3000.
+- The callback function inside `app.listen` gets executed once the server starts listening, and it logs "app is running on 3000" to the console.
+
+7. Install Nodemon
+
+- Nodemon: Automatically restarts your server when file changes in the directory are detected, which is very useful during development.
+- modify ccript:
+
+`package.json`
+
+```bash
+- "serve": "node server.js"
++ "serve": "nodemon server.js"
+```
+
+## Creating a Database
+
+### 1. Defining a Route
+
+```javascript
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
+```
+
+- `app.get("/")`: This defines a route for HTTP GET requests to the root URL (`/`).
+  - _Routes_: What you visit in a browser / what you call with requests out of JavaScript via AJAX (`fetch`, etc.):
+    - `/`: 'home' or 'root'
+    - `/bio`: A probable 'sub-site' of your homepage
+    - `/my/route`: A different route
+    - `/api/todos`: A probably route for an endpoint called via AJAX
+- `(req, res) => { ... }`: This is a callback function that gets executed when the route is accessed.
+  - `req`: Represents the HTTP request and has properties for the request query string, parameters, body, HTTP headers, etc.
+  - `res`: Represents the HTTP response that an Express app sends when it gets an HTTP request.
+- `res.send("Hello World!")`: This sends a response back to the client with the text "Hello World!".
+
+### 2. Move _data array_ from `app.js` to `server.js`
+
+```javascript
+const choices = [
+  { name: "rock", hand: "✊" },
+  { name: "paper", hand: "✋" },
+  { name: "scissor", hand: "✌️" },
+];
+```
+
+### 3. Defining the Route
+
+```javascript
+app.get("/choices", (req, res) => {
+  res.json(choices);
+});
+```
+
+- **Route Definition**: The route /choices is defined to handle GET requests.
+  ```javascript
+  app.get("/choices", (req, res) => { ... });
+  ```
+- **Response with JSON**: When a GET request is made to /choices, the server responds with the choices array in JSON format.
+
+```javascript
+(req, res) => {
+  res.json(choices);
+};
+```
+
+- **Express.js Methods**: The res.json method is used to send a JSON response, automatically setting the appropriate headers.
+
+### 1. Create `database.json` in project folder
+
+- Create `database.json` .
+- Move _data array_ from `server.js` to `database.json`.
+  `database.json`
+
+```json
+[
+  { "name": "rock", "hand": "✊" },
+  { "name": "paper", "hand": "✋" },
+  { "name": "scissor", "hand": "✌️" }
+]
+```

@@ -4,11 +4,8 @@ const paperButton = document.getElementById("paper");
 const scissorButton = document.getElementById("scissor");
 const outcome = document.getElementById("outcome");
 
-const choices = [
-  { name: "rock", hand: "✊" },
-  { name: "paper", hand: "✋" },
-  { name: "scissor", hand: "✌️" },
-];
+const response = await fetch("/notes");
+const choices = await response.json();
 
 const rock = choices[0];
 const paper = choices[1];
