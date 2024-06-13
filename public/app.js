@@ -4,15 +4,19 @@ const paperButton = document.getElementById("paper");
 const scissorButton = document.getElementById("scissor");
 const outcome = document.getElementById("outcome");
 
-const response = await fetch("/notes");
-const choices = await response.json();
+let choices = [];
+let rock, paper, scissor;
 
-const rock = choices[0];
-const paper = choices[1];
-const scissor = choices[2];
+const runChoice = async () => {
+  const response = await fetch("/choices");
+  choices = await response.json();
 
-console.log(rock, paper, scissor);
+  rock = choices[0];
+  paper = choices[1];
+  scissor = choices[2];
 
+  console.log(rock, paper, scissor);
+};
 const getComputerChoice = () => {
   const randomNumber = Math.floor(Math.random() * 3);
   switch (randomNumber) {
@@ -64,3 +68,5 @@ scissorButton.addEventListener("click", () => {
   const computer = getComputerChoice();
   determineWinner(scissor, computer);
 });
+
+runChoice();

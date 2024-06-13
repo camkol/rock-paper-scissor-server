@@ -9,7 +9,16 @@
 
 ### 1. Create a project folder
 
+```bash
+mkdir rock-paper-scissor
+cd rock-paper-scissor
+```
+
 ### 2. Create a `server.js`
+
+```bash
+touch server.js
+```
 
 ### 3. Make a simple static website (HTML, CSS + JS) in `./public` within the project folder
 
@@ -123,7 +132,7 @@ scissorButton.addEventListener("click", () => {
 ### 4. Initialized a new _Node.js_ project
 
 ```bash
-npm init
+npm init -y
 ```
 
 - `package.json`: The 'manifest' of a Node.js application - Defines name, version, author etc. - Defines scripts which make complex tasks easier - Lists dependencies
@@ -146,7 +155,7 @@ npm init
 
 ```
 
-### 5. include `"type": "module"` in `package.json` for import/export.
+### 5. Add `"type": "module"` for ES module support.
 
 `package.json`
 
@@ -299,9 +308,43 @@ app.get("/choices", (req, res) => {
 
 - **Express.js Methods**: The res.json method is used to send a JSON response, automatically setting the appropriate headers.
 
-### 1. Create `database.json` in project folder
+### 4. Update _data array_ in `app.js`
 
-- Create `database.json` .
+`app.js`
+
+```javascript
+let choices = [];
+let rock, paper, scissor;
+
+const runChoice = async () => {
+  const response = await fetch("/choices");
+  choices = await response.json();
+
+  rock = choices[0];
+  paper = choices[1];
+  scissor = choices[2];
+
+  console.log(rock, paper, scissor);
+};
+
+runChoice(); // Ensure runChoice is called to initialize the choices
+```
+
+1. **Dynamic Data Handling**:
+
+   - The second code block now handles data dynamically by fetching it from the server, making it more flexible and easier to update without changing the JavaScript code.
+
+2. **Asynchronous Operation**:
+
+   - `runChoice` is called to fetch and initialize the choices before any button click events are handled.
+   - This ensures that when a button is clicked, the choices are already defined and ready to be used.
+
+3. **Maintaining Functionality**:
+   - The core functionality (`getComputerChoice` and `determineWinner`) remains the same, ensuring that the game logic is not altered.
+
+### 5. Create `database.json`
+
+- Create `database.json` in project folder.
 - Move _data array_ from `server.js` to `database.json`.
   `database.json`
 
@@ -312,3 +355,30 @@ app.get("/choices", (req, res) => {
   { "name": "scissor", "hand": "✌️" }
 ]
 ```
+
+- By switching to reading choices from a `database.json` file, the server becomes more flexible and easier to maintain.
+
+### 6. Import File synchronozatian
+
+`server.js`
+
+```javascript
+import fs from "fs";
+```
+
+### 7. Update the Router handler
+
+`server.js`
+
+```javascript
+app.get("/choices", (req, res) => {
+  const choicesFile = fs.readFileSync("database.json", "utf-8");
+  const choices = JSON.parse(choicesFile);
+  res.json(choices);
+});
+```
+
+- This version reads the `choices` data from an external file (`database.json`).
+- `fs.readFileSync("database.json", "utf-8")` reads the content of the `database.json` file synchronously, returning its content as a string.
+- `JSON.parse(choicesFile)` parses the string content into a JavaScript array.
+- `res.json(choices)` sends the parsed array as a JSON response.
