@@ -1,9 +1,67 @@
-## Links
+# Rock, Paper, Scissors
 
+## Table of contents
+
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
+- [Instructions](#instructions)
+  - [Setting up Server](#setting-up-server)
+  - [Creating a Database](#creating-a-database)
+- [Author](#author)
+
+## Overview
+
+### The challenge
+
+Users should be able to:
+
+- View the optimal layout for the app depending on their device's screen size
+- Press buttons based on decision
+- Experience a dungeon simulator
+
+### Screenshot
+
+![](./screen.JPG)
+
+### Links
+
+- Live Site URL: [View](https://camkol.github.io/DragonRepeller/)
+
+## My process
+
+- Player stats such as experience points (xp), health, gold, current weapon, and inventory are initialized. HTML elements and buttons are linked to JavaScript variables for interaction.
+- The game defines various locations, monsters, weapons, and actions using arrays and objects. Buttons are assigned onclick functions corresponding to different in-game actions, such as going to locations, buying/selling items, and fighting monsters.
+- Combat involves attacking, dodging, and calculating damage based on the player's weapon and the monster's level. Outcomes are processed, including gaining or losing gold and xp, defeating monsters, and determining victory or defeat.
+- The game includes special events like an easter egg with a number-picking game. Restart and replay options are available upon winning or losing the game.
+- The game features localization to create a German version for your son. Text elements, button labels, and in-game messages are translated to German, allowing your son to enjoy the game in his native language.
+
+### Built with
+
+- Semantic HTML5 markup
+- CSS custom properties
+- [Sass](https://sass-lang.com/) - Preprocessor scripting language
+- Flexbox
+- CSS Grid
+- Mobile-first workflow
+- Mobile-Responsive Design
+- JavaScript - Scripting language
 - [Node.js](https://nodejs.org/) - JavaScript runtime environment
 - [Node.js Docs: Filesystem](https://nodejs.org/docs/latest-v20.x/api/fs.html)
 - [Express](https://expressjs.com/) - Most-used web framework for Node.js
-- [Wikipedia: Serialization](https://en.wikipedia.org/wiki/Serialization)
+
+### What I learned
+
+Increase server startup time. Learning how to move more objects to the server. I learned that you cant transfer functions from server to app. They have top be strings first in the server and then converted to functions with the global `window` object. Also the async functions of the transfer must be called at them bottom of the app. creating database, I found a better way for separating each object.
+
+### Continued development
+
+I want to later to include images and animation.
 
 ## Instructions
 
@@ -257,7 +315,7 @@ app.listen(3000, () => {
 + "serve": "nodemon server.js"
 ```
 
-### Creating a Database
+## Creating a Database
 
 ### 1. Defining a Route
 
@@ -387,3 +445,11 @@ app.get("/choices", (req, res) => {
 - `fs.readFileSync("database.json", "utf-8")` reads the content of the `database.json` file synchronously, returning its content as a string.
 - `JSON.parse(choicesFile)` parses the string content into a JavaScript array.
 - `res.json(choices)` sends the parsed array as a JSON response.
+
+## Author
+
+- Website - [Cameron Howze](https://camkol.github.io/)
+- Frontend Mentor - [@camkol](https://www.frontendmentor.io/profile/camkol)
+- GitHub- [@camkol](https://github.com/camkol)
+- LinkedIn - [@cameron-howze](https://www.linkedin.com/in/cameron-howze-28a646109/)
+- E-Mail - [cameronhowze4@outlook.com](mailto:cameronhowze4@outlook.com)
