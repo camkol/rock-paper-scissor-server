@@ -3,6 +3,7 @@ const rockButton = document.getElementById("rock");
 const paperButton = document.getElementById("paper");
 const scissorButton = document.getElementById("scissor");
 const outcome = document.getElementById("outcome");
+const results = document.getElementById("results");
 
 let choices = [];
 let rock, paper, scissor;
@@ -27,6 +28,9 @@ const getComputerChoice = () => {
     case 2:
       return scissor;
   }
+};
+const addResult = (result) => {
+  results.appendChild(result);
 };
 const determineWinner = (userChoice, computerChoice) => {
   const result = document.createElement("p");
