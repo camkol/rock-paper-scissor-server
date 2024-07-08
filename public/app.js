@@ -30,6 +30,7 @@ const getComputerChoice = () => {
   }
 };
 const addResult = (result) => {
+  result.setAttribute;
   results.appendChild(result);
 };
 const determineWinner = (userChoice, computerChoice) => {
