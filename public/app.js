@@ -18,6 +18,7 @@ const runChoice = async () => {
 
   console.log(rock, paper, scissor);
 };
+
 const getComputerChoice = () => {
   const randomNumber = Math.floor(Math.random() * 3);
   switch (randomNumber) {
@@ -29,8 +30,15 @@ const getComputerChoice = () => {
       return scissor;
   }
 };
-const addResult = (result) => {
-  result.setAttribute;
+const addResult = (win, id) => {
+  const dateTime = document.createElement("p");
+  dateTime.innerText = `match done ${id.getDate()}-${
+    id.getMonth() + 1
+  }-${id.getFullYear()} @${id.getHours()}:${id.getMinutes()}:${id.getSeconds()}`;
+  const result = document.createElement("div");
+  result.setAttribute("id", id);
+  result.appendChild(win);
+  result.appendChild(dateTime);
   results.appendChild(result);
 };
 const determineWinner = (userChoice, computerChoice) => {
@@ -56,6 +64,10 @@ const determineWinner = (userChoice, computerChoice) => {
   const winner = document.createElement("p");
   winner.innerText = winnerText;
   outcome.appendChild(winner);
+
+  const time = new Date();
+
+  addResult(winner, time);
 };
 
 rockButton.addEventListener("click", () => {
