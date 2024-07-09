@@ -34,6 +34,28 @@ const runResults = async () => {
   });
 };
 
+const addResult = async (result) => {
+  const response = await fetch("/results", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(result),
+  });
+
+  if (response.ok) {
+    const newResult = await response.json();
+    addResultDOM(newResult);
+  }
+};
+
+const addResultDOM = (result) => {
+  const resultDiv = document.createElement("div");
+  resultDiv.setAttribute("id", result.id);
+  resultDiv.innerHTML = `${result.user}${result.computer}${result.winner} <emote>-${result.date}@${result.time}</emote><span data-id="${result.id}">❌</span>`;
+  resultsContainer.appendChild(resultDiv);
+};
+
 const getComputerChoice = () => {
   const randomNumber = Math.floor(Math.random() * 3);
   switch (randomNumber) {
@@ -44,13 +66,6 @@ const getComputerChoice = () => {
     case 2:
       return scissor;
   }
-};
-
-const addResultDOM = (result) => {
-  const resultDiv = document.createElement("div");
-  resultDiv.setAttribute("id", result.id);
-  resultDiv.innerHTML = `${result.user}${result.computer}${result.winner} <emote>-${result.date}@${result.time}</emote><span data-id="${result.id}">❌</span>`;
-  resultsContainer.appendChild(resultDiv);
 };
 
 const determineWinner = (userChoice, computerChoice) => {
@@ -85,11 +100,13 @@ const determineWinner = (userChoice, computerChoice) => {
     user: userHand,
     computer: computerHand,
     winner: winnerText,
-    date: `${id.getDate()}-${id.getMonth() + 1}-${id.getFullYear()}`,
-    time: `${id.getHours()}:${
-      (id.getMinutes() < 10 ? "0" : "") + id.getMinutes()
-    }:${(id.getSeconds() < 10 ? "0" : "") + id.getSeconds()}`,
-    id: dateTime,
+    date: `${dateTime.getDate()}-${
+      dateTime.getMonth() + 1
+    }-${dateTime.getFullYear()}`,
+    time: `${dateTime.getHours()}:${
+      (dateTime.getMinutes() < 10 ? "0" : "") + dateTime.getMinutes()
+    }:${(dateTime.getSeconds() < 10 ? "0" : "") + dateTime.getSeconds()}`,
+    id: dateTime.toISOString(),
   };
 
   addResult(newResult);
