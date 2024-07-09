@@ -8,6 +8,13 @@ const results = document.getElementById("results");
 let choices = [];
 let rock, paper, scissor;
 
+const globalResult = [
+  {
+    user: "✋",
+    computer: "✌️",
+  },
+];
+
 const runChoice = async () => {
   const response = await fetch("/choices");
   choices = await response.json();
@@ -30,6 +37,7 @@ const getComputerChoice = () => {
       return scissor;
   }
 };
+
 const addResult = (win, id) => {
   const dateTime = document.createElement("p");
   dateTime.innerText = `match done ${id.getDate()}-${
@@ -41,9 +49,13 @@ const addResult = (win, id) => {
   result.appendChild(dateTime);
   results.appendChild(result);
 };
+
 const determineWinner = (userChoice, computerChoice) => {
+  const userHand = userChoice.hand;
+  const computerHand = computerChoice.hand;
+
   const result = document.createElement("p");
-  result.innerText = `You went ${userChoice.hand} and the computer went ${computerChoice.hand}`;
+  result.innerText = `You went ${userHand} and the computer went ${computerHand}`;
   outcome.appendChild(result);
 
   let winnerText;
@@ -75,11 +87,13 @@ rockButton.addEventListener("click", () => {
   const computer = getComputerChoice();
   determineWinner(rock, computer);
 });
+
 paperButton.addEventListener("click", () => {
   outcome.innerHTML = "";
   const computer = getComputerChoice();
   determineWinner(paper, computer);
 });
+
 scissorButton.addEventListener("click", () => {
   outcome.innerHTML = "";
   const computer = getComputerChoice();
