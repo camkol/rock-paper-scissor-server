@@ -3,7 +3,7 @@ const rockButton = document.getElementById("rock");
 const paperButton = document.getElementById("paper");
 const scissorButton = document.getElementById("scissor");
 const outcome = document.getElementById("outcome");
-const results = document.getElementById("results");
+const resultsContainer = document.getElementById("results");
 
 let choices = [];
 let rock, paper, scissor;
@@ -29,12 +29,12 @@ const runResults = async () => {
   results.forEach((result) => {
     console.log(result);
     const resultDiv = document.createElement("div");
-    resultDiv.setAttribute("id", "");
-    resultDiv.innerHTML = `${result.user}${result.computer}${result.winner}-<span>❌</span>`;
-    results.appendChild(resultDiv);
-    //  <em>${id.getDate()}-${
-    //       id.getMonth() + 1
-    //     }-${id.getFullYear()} @${id.getHours()}:${id.getMinutes()}:${id.getSeconds()}</em>
+    resultDiv.setAttribute("id", result.id);
+    resultDiv.innerHTML = `${result.user}${result.computer}${result.winner} -${result.date}@${result.time}<span data-id="${result.id}">❌</span>`;
+    resultsContainer.appendChild(resultDiv);
+    //  <em>${result.id.getDate()}-${
+    //       result.id.getMonth() + 1
+    //     }-${result.id.getFullYear()} @${result.id.getHours()}:${result.id.getMinutes()}:${result.id.getSeconds()}</em>
   });
 };
 
@@ -50,16 +50,11 @@ const getComputerChoice = () => {
   }
 };
 
-const addResult = (win, id) => {
-  const dateTime = document.createElement("p");
-  dateTime.innerText = `match done ${id.getDate()}-${
-    id.getMonth() + 1
-  }-${id.getFullYear()} @${id.getHours()}:${id.getMinutes()}:${id.getSeconds()}`;
-  const result = document.createElement("div");
-  result.setAttribute("id", id);
-  result.appendChild(win);
-  result.appendChild(dateTime);
-  results.appendChild(result);
+const addResult = (user, computer, win, id) => {
+  const resultDiv = document.createElement("div");
+  resultDiv.setAttribute("id", id);
+  resultDiv.innerHTML = `${user}${computer}${win} -${id.getDate()}@${id.getTime()}<span data-id="${id}">❌</span>`;
+  resultsContainer.appendChild(resultDiv);
 };
 
 const determineWinner = (userChoice, computerChoice) => {
@@ -91,7 +86,7 @@ const determineWinner = (userChoice, computerChoice) => {
 
   const time = new Date();
 
-  addResult(winner, time);
+  addResult(userHand, computerHand, winnerText, time);
 };
 
 rockButton.addEventListener("click", () => {
@@ -110,6 +105,10 @@ scissorButton.addEventListener("click", () => {
   outcome.innerHTML = "";
   const computer = getComputerChoice();
   determineWinner(scissor, computer);
+});
+
+resultsContainer.addEventListener("click", function (e) {
+  e.target.nodeName === "SPAN" && e.target.parentElement.remove();
 });
 
 runChoice();
