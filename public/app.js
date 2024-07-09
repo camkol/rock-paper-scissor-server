@@ -8,12 +8,7 @@ const results = document.getElementById("results");
 let choices = [];
 let rock, paper, scissor;
 
-const globalResult = [
-  {
-    user: "✋",
-    computer: "✌️",
-  },
-];
+console.log(new Date());
 
 const runChoice = async () => {
   const response = await fetch("/choices");
@@ -24,6 +19,23 @@ const runChoice = async () => {
   scissor = choices[2];
 
   console.log(rock, paper, scissor);
+};
+
+const runResults = async () => {
+  const response = await fetch("/results");
+  const results = await response.json();
+  console.log(results);
+
+  results.forEach((result) => {
+    console.log(result);
+    const resultDiv = document.createElement("div");
+    resultDiv.setAttribute("id", "");
+    resultDiv.innerHTML = `${result.user}${result.computer}${result.winner}-<span>❌</span>`;
+    results.appendChild(resultDiv);
+    //  <em>${id.getDate()}-${
+    //       id.getMonth() + 1
+    //     }-${id.getFullYear()} @${id.getHours()}:${id.getMinutes()}:${id.getSeconds()}</em>
+  });
 };
 
 const getComputerChoice = () => {
@@ -101,3 +113,4 @@ scissorButton.addEventListener("click", () => {
 });
 
 runChoice();
+runResults();
