@@ -16,6 +16,13 @@ app.get("/results", (req, res) => {
   res.json(results);
 });
 
+app.post("/results", (req, res) => {
+  const result = req.body;
+  results.push(result);
+  fs.writeFileSync("resultDatabase.json", JSON.stringify(results, null, 2));
+  res.status(201).json(result);
+});
+
 app.listen(3000, () => {
   console.log("app is running on 3000");
 });

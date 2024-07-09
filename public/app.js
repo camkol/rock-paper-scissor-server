@@ -27,11 +27,7 @@ const runResults = async () => {
   console.log(results);
 
   results.forEach((result) => {
-    console.log(result);
-    const resultDiv = document.createElement("div");
-    resultDiv.setAttribute("id", result.id);
-    resultDiv.innerHTML = `${result.user}${result.computer}${result.winner} <emote>-${result.date}@${result.time}</emote><span data-id="${result.id}">❌</span>`;
-    resultsContainer.appendChild(resultDiv);
+    addResultDOM(result);
     //  <em>${result.id.getDate()}-${
     //       result.id.getMonth() + 1
     //     }-${result.id.getFullYear()} @${result.id.getHours()}:${result.id.getMinutes()}:${result.id.getSeconds()}</em>
@@ -50,16 +46,10 @@ const getComputerChoice = () => {
   }
 };
 
-const addResult = (user, computer, win, id) => {
+const addResultDOM = (result) => {
   const resultDiv = document.createElement("div");
-  resultDiv.setAttribute("id", id);
-  resultDiv.innerHTML = `${user}${computer}${win} <emote>-${id.getDate()}-${
-    id.getMonth() + 1
-  }-${id.getFullYear()}@${id.getHours()}:${
-    (id.getMinutes() < 10 ? "0" : "") + id.getMinutes()
-  }:${
-    (id.getSeconds() < 10 ? "0" : "") + id.getSeconds()
-  }</emote><span data-id="${id}">❌</span>`;
+  resultDiv.setAttribute("id", result.id);
+  resultDiv.innerHTML = `${result.user}${result.computer}${result.winner} <emote>-${result.date}@${result.time}</emote><span data-id="${result.id}">❌</span>`;
   resultsContainer.appendChild(resultDiv);
 };
 
@@ -90,9 +80,19 @@ const determineWinner = (userChoice, computerChoice) => {
   winner.innerText = winnerText;
   outcome.appendChild(winner);
 
-  const time = new Date();
+  const dateTime = new Date();
+  const newResult = {
+    user: userHand,
+    computer: computerHand,
+    winner: winnerText,
+    date: `${id.getDate()}-${id.getMonth() + 1}-${id.getFullYear()}`,
+    time: `${id.getHours()}:${
+      (id.getMinutes() < 10 ? "0" : "") + id.getMinutes()
+    }:${(id.getSeconds() < 10 ? "0" : "") + id.getSeconds()}`,
+    id: dateTime,
+  };
 
-  addResult(userHand, computerHand, winnerText, time);
+  addResult(newResult);
 };
 
 rockButton.addEventListener("click", () => {
