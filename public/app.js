@@ -30,7 +30,7 @@ const runResults = async () => {
     console.log(result);
     const resultDiv = document.createElement("div");
     resultDiv.setAttribute("id", result.id);
-    resultDiv.innerHTML = `${result.user}${result.computer}${result.winner} -${result.date}@${result.time}<span data-id="${result.id}">❌</span>`;
+    resultDiv.innerHTML = `${result.user}${result.computer}${result.winner} <emote>-${result.date}@${result.time}</emote><span data-id="${result.id}">❌</span>`;
     resultsContainer.appendChild(resultDiv);
     //  <em>${result.id.getDate()}-${
     //       result.id.getMonth() + 1
@@ -53,7 +53,13 @@ const getComputerChoice = () => {
 const addResult = (user, computer, win, id) => {
   const resultDiv = document.createElement("div");
   resultDiv.setAttribute("id", id);
-  resultDiv.innerHTML = `${user}${computer}${win} -${id.getDate()}@${id.getTime()}<span data-id="${id}">❌</span>`;
+  resultDiv.innerHTML = `${user}${computer}${win} <emote>-${id.getDate()}-${
+    id.getMonth() + 1
+  }-${id.getFullYear()}@${id.getHours()}:${
+    (id.getMinutes() < 10 ? "0" : "") + id.getMinutes()
+  }:${
+    (id.getSeconds() < 10 ? "0" : "") + id.getSeconds()
+  }</emote><span data-id="${id}">❌</span>`;
   resultsContainer.appendChild(resultDiv);
 };
 
