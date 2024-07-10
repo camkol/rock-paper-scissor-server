@@ -26,6 +26,13 @@ app.post("/results", (req, res) => {
   res.status(201).json(result);
 });
 
+app.delete("/results/:id", (req, res) => {
+  const { id } = req.params;
+  results = results.filter((result) => result.id !== id);
+  fs.writeFileSync("resultDatabase.json", JSON.stringify(results, null, 2));
+  res.status(204).send();
+});
+
 app.listen(3000, () => {
   console.log("app is running on 3000");
 });
