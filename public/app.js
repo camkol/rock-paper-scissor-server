@@ -28,9 +28,6 @@ const runResults = async () => {
 
   results.forEach((result) => {
     addResultDOM(result);
-    //  <em>${result.id.getDate()}-${
-    //       result.id.getMonth() + 1
-    //     }-${result.id.getFullYear()} @${result.id.getHours()}:${result.id.getMinutes()}:${result.id.getSeconds()}</em>
   });
 };
 
@@ -49,9 +46,22 @@ const addResult = async (result) => {
   }
 };
 
+const deleteResult = async (id) => {
+  const response = await fetch(`/results/${id}`, {
+    method: "DELETE",
+  });
+
+  if (response.ok) {
+    const resultToDelete = document.getElementById(`result-${id}`);
+    if (resultToDelete) {
+      resultToDelete.remove();
+    }
+  }
+};
+
 const addResultDOM = (result) => {
   const resultDiv = document.createElement("div");
-  resultDiv.setAttribute("id", result.id);
+  resultDiv.setAttribute("id", `result-${result.id}`);
   resultDiv.innerHTML = `${result.user}${result.computer}${result.winner} <emote>-${result.date}@${result.time}</emote><span data-id="${result.id}">❌</span>`;
   resultsContainer.appendChild(resultDiv);
 };
@@ -131,7 +141,10 @@ scissorButton.addEventListener("click", () => {
 });
 
 resultsContainer.addEventListener("click", function (e) {
-  e.target.nodeName === "SPAN" && e.target.parentElement.remove();
+  if (e.target.nodeName === "SPAN") {
+    const id = e.target.getAttribute("data-id");
+    deleteResult(id); //this does not delete the result from the DOM unless I refresh, how come?
+  }
 });
 
 runChoice();

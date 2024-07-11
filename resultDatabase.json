@@ -1,178 +1,18 @@
 [
   {
     "user": "✋",
-    "computer": "✌️",
-    "winner": "The computer won!",
-    "date": "9-7-2024",
-    "time": "07:22:46",
-    "id": "2024-07-09T07:22:46.050Z"
+    "computer": "✋",
+    "winner": "It's a tie!",
+    "date": "11-7-2024",
+    "time": "10:56:55",
+    "id": "2024-07-11T08:56:55.859Z"
   },
   {
     "user": "✌️",
     "computer": "✋",
     "winner": "You won!",
-    "date": "9-7-2024",
-    "time": "07:23:32",
-    "id": "2024-07-09T07:23:32.821Z"
-  },
-  {
-    "user": "✊",
-    "computer": "✋",
-    "winner": "The computer won!",
-    "date": "9-7-2024",
-    "time": "23:37:17",
-    "id": "2024-07-09T21:37:17.036Z"
-  },
-  {
-    "user": "✊",
-    "computer": "✌️",
-    "winner": "You won!",
-    "date": "9-7-2024",
-    "time": "23:37:18",
-    "id": "2024-07-09T21:37:18.173Z"
-  },
-  {
-    "user": "✋",
-    "computer": "✊",
-    "winner": "You won!",
-    "date": "9-7-2024",
-    "time": "23:37:18",
-    "id": "2024-07-09T21:37:18.765Z"
-  },
-  {
-    "user": "✊",
-    "computer": "✌️",
-    "winner": "You won!",
-    "date": "9-7-2024",
-    "time": "23:37:19",
-    "id": "2024-07-09T21:37:19.875Z"
-  },
-  {
-    "user": "✋",
-    "computer": "✋",
-    "winner": "It's a tie!",
-    "date": "9-7-2024",
-    "time": "23:39:04",
-    "id": "2024-07-09T21:39:04.868Z"
-  },
-  {
-    "user": "✋",
-    "computer": "✋",
-    "winner": "It's a tie!",
-    "date": "9-7-2024",
-    "time": "23:39:05",
-    "id": "2024-07-09T21:39:05.125Z"
-  },
-  {
-    "user": "✋",
-    "computer": "✋",
-    "winner": "It's a tie!",
-    "date": "9-7-2024",
-    "time": "23:39:05",
-    "id": "2024-07-09T21:39:05.475Z"
-  },
-  {
-    "user": "✋",
-    "computer": "✋",
-    "winner": "It's a tie!",
-    "date": "9-7-2024",
-    "time": "23:39:05",
-    "id": "2024-07-09T21:39:05.969Z"
-  },
-  {
-    "user": "✋",
-    "computer": "✋",
-    "winner": "It's a tie!",
-    "date": "9-7-2024",
-    "time": "23:40:46",
-    "id": "2024-07-09T21:40:46.953Z"
-  },
-  {
-    "user": "✋",
-    "computer": "✋",
-    "winner": "It's a tie!",
-    "date": "9-7-2024",
-    "time": "23:43:31",
-    "id": "2024-07-09T21:43:31.417Z"
-  },
-  {
-    "user": "✌️",
-    "computer": "✊",
-    "winner": "The computer won!",
-    "date": "9-7-2024",
-    "time": "23:43:33",
-    "id": "2024-07-09T21:43:33.201Z"
-  },
-  {
-    "user": "✊",
-    "computer": "✋",
-    "winner": "The computer won!",
-    "date": "9-7-2024",
-    "time": "23:43:34",
-    "id": "2024-07-09T21:43:34.917Z"
-  },
-  {
-    "user": "✋",
-    "computer": "✌️",
-    "winner": "The computer won!",
-    "date": "9-7-2024",
-    "time": "23:43:35",
-    "id": "2024-07-09T21:43:35.863Z"
-  },
-  {
-    "user": "✌️",
-    "computer": "✊",
-    "winner": "The computer won!",
-    "date": "9-7-2024",
-    "time": "23:43:36",
-    "id": "2024-07-09T21:43:36.815Z"
-  },
-  {
-    "user": "✊",
-    "computer": "✊",
-    "winner": "It's a tie!",
-    "date": "9-7-2024",
-    "time": "23:43:37",
-    "id": "2024-07-09T21:43:37.599Z"
-  },
-  {
-    "user": "✋",
-    "computer": "✌️",
-    "winner": "The computer won!",
-    "date": "9-7-2024",
-    "time": "23:49:53",
-    "id": "2024-07-09T21:49:53.943Z"
-  },
-  {
-    "user": "✌️",
-    "computer": "✋",
-    "winner": "You won!",
-    "date": "9-7-2024",
-    "time": "23:49:55",
-    "id": "2024-07-09T21:49:55.467Z"
-  },
-  {
-    "user": "✌️",
-    "computer": "✋",
-    "winner": "You won!",
-    "date": "9-7-2024",
-    "time": "23:49:56",
-    "id": "2024-07-09T21:49:56.417Z"
-  },
-  {
-    "user": "✌️",
-    "computer": "✋",
-    "winner": "You won!",
-    "date": "9-7-2024",
-    "time": "23:49:58",
-    "id": "2024-07-09T21:49:58.210Z"
-  },
-  {
-    "user": "✌️",
-    "computer": "✊",
-    "winner": "The computer won!",
-    "date": "9-7-2024",
-    "time": "23:49:58",
-    "id": "2024-07-09T21:49:58.597Z"
+    "date": "11-7-2024",
+    "time": "10:57:15",
+    "id": "2024-07-11T08:57:15.615Z"
   }
 ]
