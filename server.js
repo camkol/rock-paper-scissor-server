@@ -38,8 +38,8 @@ app.post("/results", (req, res) => {
 
 app.delete("/results/:id", (req, res) => {
   const { id } = req.params;
-  const results = queryAllResults();
-  results.filter((result) => result.id !== id);
+  let results = queryAllResults();
+  results = results.filter((result) => result.id !== id);
   saveAllResults(results);
   res.status(204).send();
 });

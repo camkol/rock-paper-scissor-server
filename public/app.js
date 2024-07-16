@@ -6,6 +6,7 @@ const outcome = document.getElementById("outcome");
 const resultsContainer = document.getElementById("results");
 
 let choices = [];
+let results = [];
 
 let rock, paper, scissor;
 
@@ -22,14 +23,20 @@ const runChoice = async () => {
   console.log(rock, paper, scissor);
 };
 
-const runResults = async () => {
-  const response = await fetch("/results");
-  const results = await response.json();
-  console.log(results);
+const render = () => {
+  resultsContainer.innerHTML = "";
 
   results.forEach((result) => {
     addResultDOM(result);
   });
+};
+
+const runResults = async () => {
+  const response = await fetch("/results");
+  results = await response.json();
+  console.log(results);
+
+  render();
 };
 
 const addResult = async (result) => {
@@ -42,8 +49,7 @@ const addResult = async (result) => {
   });
 
   if (response.ok) {
-    const newResult = await response.json();
-    addResultDOM(newResult);
+    await runResults();
   }
 };
 
@@ -53,16 +59,14 @@ const deleteResult = async (id) => {
   });
 
   if (response.ok) {
-    const resultToDelete = document.getElementById(`result-${id}`);
-    if (resultToDelete) {
-      resultToDelete.remove();
-    }
+    await runResults();
   }
 };
 
 const addResultDOM = (result) => {
   const resultDiv = document.createElement("div");
   resultDiv.setAttribute("id", `result-${result.id}`);
+
   resultDiv.innerHTML = `${result.user}${result.computer}${result.winner} <emote>-${result.date}@${result.time}</emote><span data-id="${result.id}">❌</span>`;
   resultsContainer.appendChild(resultDiv);
 };
