@@ -14,5 +14,141 @@
     "date": "11-7-2024",
     "time": "10:57:15",
     "id": "2024-07-11T08:57:15.615Z"
+  },
+  {
+    "user": "✊",
+    "computer": "✋",
+    "winner": "The computer won!",
+    "date": "16-7-2024",
+    "time": "12:10:59",
+    "id": "2024-07-16T10:10:59.154Z"
+  },
+  {
+    "user": "✋",
+    "computer": "✊",
+    "winner": "You won!",
+    "date": "16-7-2024",
+    "time": "12:11:01",
+    "id": "2024-07-16T10:11:01.496Z"
+  },
+  {
+    "user": "✌️",
+    "computer": "✋",
+    "winner": "You won!",
+    "date": "16-7-2024",
+    "time": "12:11:02",
+    "id": "2024-07-16T10:11:02.792Z"
+  },
+  {
+    "user": "✋",
+    "computer": "✊",
+    "winner": "You won!",
+    "date": "16-7-2024",
+    "time": "13:44:00",
+    "id": "2024-07-16T11:44:00.569Z"
+  },
+  {
+    "user": "✋",
+    "computer": "✌️",
+    "winner": "The computer won!",
+    "date": "16-7-2024",
+    "time": "13:44:03",
+    "id": "2024-07-16T11:44:03.953Z"
+  },
+  {
+    "user": "✊",
+    "computer": "✌️",
+    "winner": "You won!",
+    "date": "16-7-2024",
+    "time": "13:44:04",
+    "id": "2024-07-16T11:44:04.655Z"
+  },
+  {
+    "user": "✌️",
+    "computer": "✋",
+    "winner": "You won!",
+    "date": "16-7-2024",
+    "time": "13:44:05",
+    "id": "2024-07-16T11:44:05.267Z"
+  },
+  {
+    "user": "✌️",
+    "computer": "✊",
+    "winner": "The computer won!",
+    "date": "16-7-2024",
+    "time": "13:44:12",
+    "id": "2024-07-16T11:44:12.700Z"
+  },
+  {
+    "user": "✋",
+    "computer": "✌️",
+    "winner": "The computer won!",
+    "date": "16-7-2024",
+    "time": "13:44:13",
+    "id": "2024-07-16T11:44:13.386Z"
+  },
+  {
+    "user": "✊",
+    "computer": "✌️",
+    "winner": "You won!",
+    "date": "16-7-2024",
+    "time": "13:44:14",
+    "id": "2024-07-16T11:44:14.632Z"
+  },
+  {
+    "id": "03c29416-5436-41f2-b68c-40e67d97d429",
+    "user": "✋",
+    "computer": "✋",
+    "winner": "It's a tie!",
+    "date": "16-7-2024",
+    "time": "14:12:16"
+  },
+  {
+    "id": "0503f285-0396-494e-8a09-4ec084f9d2be",
+    "user": "✌️",
+    "computer": "✋",
+    "winner": "You won!",
+    "date": "16-7-2024",
+    "time": "14:12:17"
+  },
+  {
+    "id": "fc753ec9-d234-43e9-8480-e9674494ee44",
+    "user": "✌️",
+    "computer": "✊",
+    "winner": "The computer won!",
+    "date": "16-7-2024",
+    "time": "14:16:18"
+  },
+  {
+    "id": "0fc04dba-76e2-45b5-a563-8730acf0a7a9",
+    "user": "✌️",
+    "computer": "✌️",
+    "winner": "It's a tie!",
+    "date": "16-7-2024",
+    "time": "14:16:19"
+  },
+  {
+    "id": "cccaefe6-67cc-4776-ba05-ef6795e6429e",
+    "user": "✌️",
+    "computer": "✋",
+    "winner": "You won!",
+    "date": "16-7-2024",
+    "time": "14:16:21"
+  },
+  {
+    "id": "f0d1ceb5-8664-4086-982c-43eff28860d9",
+    "user": "✋",
+    "computer": "✊",
+    "winner": "You won!",
+    "date": "16-7-2024",
+    "time": "14:16:21"
+  },
+  {
+    "id": "48d12de0-f168-41b4-ae17-2ceb8113bfa9",
+    "user": "✋",
+    "computer": "✌️",
+    "winner": "The computer won!",
+    "date": "16-7-2024",
+    "time": "14:16:23"
   }
 ]

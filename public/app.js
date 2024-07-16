@@ -6,6 +6,7 @@ const outcome = document.getElementById("outcome");
 const resultsContainer = document.getElementById("results");
 
 let choices = [];
+
 let rock, paper, scissor;
 
 console.log(new Date());
@@ -116,7 +117,7 @@ const determineWinner = (userChoice, computerChoice) => {
     time: `${dateTime.getHours()}:${
       (dateTime.getMinutes() < 10 ? "0" : "") + dateTime.getMinutes()
     }:${(dateTime.getSeconds() < 10 ? "0" : "") + dateTime.getSeconds()}`,
-    id: dateTime.toISOString(),
+    // id: dateTime.toISOString(),
   };
 
   addResult(newResult);

@@ -1,5 +1,6 @@
 import express from "express";
 import fs from "fs";
+import crypto from "crypto";
 
 const app = express();
 
@@ -7,7 +8,14 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-let results = JSON.parse(fs.readFileSync("resultDatabase.json", "utf-8"));
+const queryAllResults = () => {
+  const resultsfile = fs.readFileSync("resultDatabase.json", "utf-8");
+  return JSON.parse(resultsfile);
+};
+
+const saveAllResults = (results) => {
+  fs.writeFileSync("resultDatabase.json", JSON.stringify(results, null, 2));
+};
 
 app.get("/choices", (req, res) => {
   const choicesFile = fs.readFileSync("choiceDatabase.json", "utf-8");
@@ -16,20 +24,23 @@ app.get("/choices", (req, res) => {
 });
 
 app.get("/results", (req, res) => {
+  const results = queryAllResults();
   res.json(results);
 });
 
 app.post("/results", (req, res) => {
-  const result = req.body;
+  const results = queryAllResults();
+  const result = { id: crypto.randomUUID(), ...req.body };
   results.push(result);
-  fs.writeFileSync("resultDatabase.json", JSON.stringify(results, null, 2));
+  saveAllResults(results);
   res.status(201).json(result);
 });
 
 app.delete("/results/:id", (req, res) => {
   const { id } = req.params;
-  results = results.filter((result) => result.id !== id);
-  fs.writeFileSync("resultDatabase.json", JSON.stringify(results, null, 2));
+  const results = queryAllResults();
+  results.filter((result) => result.id !== id);
+  saveAllResults(results);
   res.status(204).send();
 });
 
