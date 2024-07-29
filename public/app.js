@@ -70,6 +70,7 @@ const addResultDOM = (result) => {
 
   resultDiv.setAttribute("id", `result-${result.id}`);
   resultSpan.setAttribute("data-id", `${result.id}`);
+  resultSpan.setAttribute("class", `close`);
 
   resultDiv.innerText = `${result.user}${result.computer}${result.winner} `;
   resultEmote.innerText = `-${result.date}@${result.time}`;
