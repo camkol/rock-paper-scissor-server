@@ -65,9 +65,20 @@ const deleteResult = async (id) => {
 
 const addResultDOM = (result) => {
   const resultDiv = document.createElement("div");
-  resultDiv.setAttribute("id", `result-${result.id}`);
+  const resultEmote = document.createElement("emote");
+  const resultSpan = document.createElement("span");
 
-  resultDiv.innerHTML = `${result.user}${result.computer}${result.winner} <emote>-${result.date}@${result.time}</emote><span data-id="${result.id}">❌</span>`;
+  resultDiv.setAttribute("id", `result-${result.id}`);
+  resultSpan.setAttribute("data-id", `${result.id}`);
+
+  resultDiv.innerText = `${result.user}${result.computer}${result.winner} `;
+  resultEmote.innerText = `-${result.date}@${result.time}`;
+  resultSpan.innerText = "❌";
+
+  //resultDiv.innerHTML = `${result.user}${result.computer}${result.winner} <emote>-${result.date}@${result.time}</emote><span data-id="${result.id}">❌</span>`;
+
+  resultDiv.appendChild(resultEmote);
+  resultDiv.appendChild(resultSpan);
   resultsContainer.appendChild(resultDiv);
 };
 
