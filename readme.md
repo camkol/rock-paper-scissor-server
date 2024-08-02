@@ -35,11 +35,12 @@ Users should be able to:
 
 ## My process
 
-- Player stats such as experience points (xp), health, gold, current weapon, and inventory are initialized. HTML elements and buttons are linked to JavaScript variables for interaction.
-- The game defines various locations, monsters, weapons, and actions using arrays and objects. Buttons are assigned onclick functions corresponding to different in-game actions, such as going to locations, buying/selling items, and fighting monsters.
-- Combat involves attacking, dodging, and calculating damage based on the player's weapon and the monster's level. Outcomes are processed, including gaining or losing gold and xp, defeating monsters, and determining victory or defeat.
-- The game includes special events like an easter egg with a number-picking game. Restart and replay options are available upon winning or losing the game.
-- The game features localization to create a German version for your son. Text elements, button labels, and in-game messages are translated to German, allowing your son to enjoy the game in his native language.
+- The code creates a Rock-Paper-Scissors game using an Express server and a static HTML/JavaScript front end.
+- The server provides endpoints to retrieve game choices and results, and to add or delete game results.
+- The client fetches choices and results from the server and displays them on the page.
+- When a player makes a choice, the client determines the winner and sends the result to the server.
+- The server stores the result in a JSON file and the client updates the displayed results.
+- Deleting a result triggers a request to the server, which removes the result from the JSON file and refreshes the display.
 
 ### Built with
 
